@@ -76,23 +76,28 @@ object ConnectFour {
 
   def placeChip(col : Int, turn : Int, my_board : Board): Unit ={
     val new_board : Array[Array[String]] = my_board.getChips()
+    var index : Int = 0
 
     for (chip <- new_board(col-1)) {
 
       if (chip == "_") {
 
         if (turn % 2 == 0) {
-          new_board(col - 1) indexOf(chip) = "$"
+          new_board(col - 1)(index) = "$"
+          my_board.setChips(new_board)
+          return
         }
 
         else {
-          new_board(col - 1) indexOf(chip) = "@"
+          new_board(col - 1)(index) = "@"
+          my_board.setChips(new_board)
+          return
         }
       }
+      index += 1
     }
-
-    my_board.setChips(new_board)
   }
+
 
   def checkWinner(my_board : Board): Int ={
     val my_chips : Array[Array[String]] = my_board.getChips()
