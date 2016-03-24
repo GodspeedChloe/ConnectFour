@@ -104,6 +104,7 @@ object ConnectFour {
     val my_chips : Array[Array[String]] = my_board.getChips()
     var row : Int = 5
 
+    println("Latest Board:")
     while(row >= 0){
       var row_total : String = ""
 
@@ -121,16 +122,36 @@ object ConnectFour {
     val my_chips : Array[Array[String]] = my_board.getChips()
 
     for (col <- 0 to 3) {
-      for (chip <- 0 to 5) {
-        if (chip + 3 < 5) {
-          if (my_chips(col)(chip) == my_chips(col)(chip+1)) {
+      for (row <- 0 to 5) {
 
+        //max height where a vertical winner can start
+        if (row + 3 < 5) {
+          if ((my_chips(col)(row) == my_chips(col)(row+1)) ||
+            (my_chips(col)(row) == my_chips(col)(row+2)) ||
+            (my_chips(col)(row) == my_chips(col)(row+3))) {
+
+            if (my_chips(col)(row) == "$"){
+              return 1
+            }
+            else {
+              return 2
+            }
           }
         }
 
-        //if there aren't enough possible chips to the right
+        //max width where a horizontal winner can start
         if (col + 3 < 6) {
+          if ((my_chips(col)(row) == my_chips(col+1)(row)) ||
+            (my_chips(col)(row) == my_chips(col+2)(row)) ||
+            (my_chips(col)(row) == my_chips(col+3)(row))){
 
+            if (my_chips(col)(row) == "$"){
+              return 1
+            }
+            else {
+              return 2
+            }
+          }
         }
       }
     }
