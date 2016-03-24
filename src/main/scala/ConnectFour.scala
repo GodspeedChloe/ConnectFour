@@ -94,7 +94,25 @@ object ConnectFour {
           return
         }
       }
+
       index += 1
+    }
+  }
+
+
+  def displayBoard(my_board : Board): Unit ={
+    val my_chips : Array[Array[String]] = my_board.getChips()
+    var row : Int = 5
+
+    while(row >= 0){
+      var row_total : String = ""
+
+      for(col <- 0 to 6){
+        row_total = row_total + my_chips(col)(row) + " "
+      }
+
+      row -= 1
+      println(row_total)
     }
   }
 
