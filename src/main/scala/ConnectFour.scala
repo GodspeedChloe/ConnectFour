@@ -2,10 +2,16 @@ import GameBoard.Board
 
 /**
   * Created by godspeedchloe on 3/19/16.
+  * This object is the game.  It interacts with users and applies logic to
+  * a single Board instance
   */
 object ConnectFour {
 
 
+  /**
+    * The main class to run the game
+    * @param args standards arguments
+    */
   def main(args: Array[String]) {
     val my_board = new Board
     var go : Boolean = true
@@ -45,6 +51,12 @@ object ConnectFour {
   }
 
 
+  /**
+    * This function displays whose turn it is, takes the turn from
+    * console and parses it
+    * @param turn the iteration of the game
+    * @return Either 0 or the column the player want's to place the chip
+    */
   def takeInput(turn : Int): Int = {
     var player : Int = 1
 
@@ -63,6 +75,11 @@ object ConnectFour {
   }
 
 
+  /**
+    * This function checks whether or not a String can be cast to an integer
+    * @param string the input from takeInput
+    * @return 0 or 1, treated as booleans
+    */
   def parseInput(string: String): Int = {
     var valid: Int = 0
     val column : Int = toInt(string)
@@ -90,6 +107,13 @@ object ConnectFour {
   }
 
 
+  /**
+    * This function places chips into the correct spot on the board,
+    * simulating gravity and mindful of which player placed the chip
+    * @param col the user input for their move
+    * @param turn the iteration that the game is on
+    * @param my_board the game board we are to be updating
+    */
   def placeChip(col : Int, turn : Int, my_board : Board): Unit ={
     val new_board : Array[Array[String]] = my_board.getChips()
     var index : Int = 0
@@ -116,6 +140,11 @@ object ConnectFour {
   }
 
 
+  /**
+    * This function iterates through our board and prints it so the players
+    * can digest all the information
+    * @param my_board the board we are to be displaying
+    */
   def displayBoard(my_board : Board): Unit ={
     val my_chips : Array[Array[String]] = my_board.getChips()
     var row : Int = 5
@@ -134,6 +163,12 @@ object ConnectFour {
   }
 
 
+  /**
+    * This function iterates through the board and tries to locate a winner
+    * It is to be called after every move
+    * @param my_board the board we are to be checking for winners
+    * @return 0 for no winner, 1 for a Player 1 win, 2 for a Player 2 win
+    */
   def checkWinner(my_board : Board): Int ={
     val my_chips : Array[Array[String]] = my_board.getChips()
 
@@ -210,6 +245,12 @@ object ConnectFour {
   }
 
 
+  /**
+    * Helper function for the parseInput function
+    * Gracefully tries and catches whether or not casting String to Integer is possible
+    * @param string the string we are trying to cast as an Integer
+    * @return 0 for non-integer, or the integer
+    */
   def toInt(string: String): Int ={
 
     try {
