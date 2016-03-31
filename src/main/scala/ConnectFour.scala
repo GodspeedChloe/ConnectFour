@@ -18,12 +18,28 @@ object ConnectFour {
       "\n    $ -> Player1, @ -> Player2")
 
     while (go) {
-      val input: Int = takeInput(turn)
+      val input : Int = takeInput(turn)
 
       if (input > 0){
         placeChip(input, turn, my_board)
+
         turn += 1
-        checkWinner(my_board)
+
+        val winner : Int = checkWinner(my_board)
+
+        displayBoard(my_board)
+
+        if (winner == 1) {
+          println("\n" + "!!!!!!!!!!!!!!!! Player 1 WINS !!!!!!!!!!!!!!!!" + "\nThanks for playing!")
+          go = false
+          System.exit(0)
+        }
+
+        else if (winner == 2) {
+          println("\n" + "!!!!!!!!!!!!!!!! Player 2 WINS !!!!!!!!!!!!!!!!" + "\nThanks for playing!")
+          go = false
+          System.exit(0)
+        }
       }
     }
   }
@@ -36,7 +52,7 @@ object ConnectFour {
       player = 2
     }
 
-    print("Player" + player + "'s move: ")
+    print("\nPlayer" + player + "'s move: ")
     val input: String = readLine()
 
     if(parseInput(input) != 1) {
@@ -104,7 +120,7 @@ object ConnectFour {
     val my_chips : Array[Array[String]] = my_board.getChips()
     var row : Int = 5
 
-    println("Latest Board:")
+    println("\nLatest Board:")
     while(row >= 0){
       var row_total : String = ""
 
@@ -121,43 +137,78 @@ object ConnectFour {
   def checkWinner(my_board : Board): Int ={
     val my_chips : Array[Array[String]] = my_board.getChips()
 
-    for (col <- 0 to 3) {
+    for (col <- 0 to 6) {
       for (row <- 0 to 5) {
 
-        //max height where a vertical winner can start
-        if (row + 3 < 5) {
-          if ((my_chips(col)(row) == my_chips(col)(row+1)) ||
-            (my_chips(col)(row) == my_chips(col)(row+2)) ||
-            (my_chips(col)(row) == my_chips(col)(row+3))) {
+        if (my_chips(col)(row) == "_") {
 
-            if (my_chips(col)(row) == "$"){
-              return 1
-            }
-            else {
-              return 2
+        }
+        else {
+          //max height where a vertical winner can start
+          if (row + 3 < 5) {
+            if ((my_chips(col)(row) == my_chips(col)(row + 1)) &&
+              (my_chips(col)(row) == my_chips(col)(row + 2)) &&
+              (my_chips(col)(row) == my_chips(col)(row + 3))) {
+
+              if (my_chips(col)(row) == "$") {
+                return 1
+              }
+              else {
+                return 2
+              }
             }
           }
-        }
 
-        //max width where a horizontal winner can start
-        if (col + 3 < 6) {
-          if ((my_chips(col)(row) == my_chips(col+1)(row)) ||
-            (my_chips(col)(row) == my_chips(col+2)(row)) ||
-            (my_chips(col)(row) == my_chips(col+3)(row))){
+          //max width where a horizontal winner can start
+          if (col + 3 < 6) {
+            if ((my_chips(col)(row) == my_chips(col + 1)(row)) &&
+              (my_chips(col)(row) == my_chips(col + 2)(row)) &&
+              (my_chips(col)(row) == my_chips(col + 3)(row))) {
 
-            if (my_chips(col)(row) == "$"){
-              return 1
+              if (my_chips(col)(row) == "$") {
+                return 1
+              }
+              else {
+                return 2
+              }
             }
-            else {
-              return 2
+          }
+
+          //max width and height for a diagonal + slope winner
+          if ((col + 3 < 6) && (row + 3 < 5)) {
+            if ((my_chips(col)(row) == my_chips(col + 1)(row + 1)) &&
+              (my_chips(col)(row) == my_chips(col + 2)(row + 2)) &&
+              (my_chips(col)(row) == my_chips(col + 3)(row + 3))) {
+
+              if (my_chips(col)(row) == "$") {
+                return 1
+              }
+              else {
+                return 2
+              }
+            }
+          }
+
+          //max width and height for a diagonal - slope winner
+          if ((col + 3 < 6) && (row > 2)) {
+            if ((my_chips(col)(row) == my_chips(col + 1)(row - 1)) &&
+              (my_chips(col)(row) == my_chips(col + 2)(row - 2)) &&
+              (my_chips(col)(row) == my_chips(col + 3)(row - 3))) {
+
+              if (my_chips(col)(row) == "$") {
+                return 1
+              }
+              else {
+                return 2
+              }
             }
           }
         }
       }
     }
-
     0
   }
+
 
   def toInt(string: String): Int ={
 
@@ -167,6 +218,4 @@ object ConnectFour {
       case e: Exception => 0
     }
   }
-
-
 }
