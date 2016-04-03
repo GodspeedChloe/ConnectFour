@@ -1,7 +1,7 @@
 import GameBoard.Board
 
 /**
-  * Created by godspeedchloe on 3/19/16.
+  * Created by Chloe on 3/19/16.
   * This object is the game.  It interacts with users and applies logic to
   * a single Board instance
   */
@@ -13,6 +13,7 @@ object ConnectFour {
     * @param args standards arguments
     */
   def main(args: Array[String]) {
+
     val my_board = new Board
     var go : Boolean = true
     var turn : Int = 0
@@ -24,6 +25,7 @@ object ConnectFour {
       "\n    $ -> Player1, @ -> Player2")
 
     while (go) {
+
       val input : Int = takeInput(turn)
 
       if (input > 0){
@@ -58,6 +60,7 @@ object ConnectFour {
     * @return Either 0 or the column the player want's to place the chip
     */
   def takeInput(turn : Int): Int = {
+
     var player : Int = 1
 
     if (turn % 2 != 0){
@@ -81,6 +84,7 @@ object ConnectFour {
     * @return 0 or 1, treated as booleans
     */
   def parseInput(string: String): Int = {
+
     var valid: Int = 0
     val column : Int = toInt(string)
 
@@ -115,6 +119,7 @@ object ConnectFour {
     * @param my_board the game board we are to be updating
     */
   def placeChip(col : Int, turn : Int, my_board : Board): Unit ={
+
     val new_board : Array[Array[String]] = my_board.getChips()
     var index : Int = 0
 
@@ -146,11 +151,14 @@ object ConnectFour {
     * @param my_board the board we are to be displaying
     */
   def displayBoard(my_board : Board): Unit ={
+
     val my_chips : Array[Array[String]] = my_board.getChips()
     var row : Int = 5
 
     println("\nLatest Board:")
+
     while(row >= 0){
+
       var row_total : String = ""
 
       for(col <- 0 to 6){
@@ -170,17 +178,18 @@ object ConnectFour {
     * @return 0 for no winner, 1 for a Player 1 win, 2 for a Player 2 win
     */
   def checkWinner(my_board : Board): Int ={
+
     val my_chips : Array[Array[String]] = my_board.getChips()
 
     for (col <- 0 to 6) {
+
       for (row <- 0 to 5) {
 
-        if (my_chips(col)(row) == "_") {
+        if (my_chips(col)(row) != "_") {
 
-        }
-        else {
           //max height where a vertical winner can start
           if (row + 3 < 5) {
+
             if ((my_chips(col)(row) == my_chips(col)(row + 1)) &&
               (my_chips(col)(row) == my_chips(col)(row + 2)) &&
               (my_chips(col)(row) == my_chips(col)(row + 3))) {
@@ -188,6 +197,7 @@ object ConnectFour {
               if (my_chips(col)(row) == "$") {
                 return 1
               }
+
               else {
                 return 2
               }
@@ -196,6 +206,7 @@ object ConnectFour {
 
           //max width where a horizontal winner can start
           if (col + 3 < 6) {
+
             if ((my_chips(col)(row) == my_chips(col + 1)(row)) &&
               (my_chips(col)(row) == my_chips(col + 2)(row)) &&
               (my_chips(col)(row) == my_chips(col + 3)(row))) {
@@ -203,6 +214,7 @@ object ConnectFour {
               if (my_chips(col)(row) == "$") {
                 return 1
               }
+
               else {
                 return 2
               }
@@ -218,6 +230,7 @@ object ConnectFour {
               if (my_chips(col)(row) == "$") {
                 return 1
               }
+
               else {
                 return 2
               }
@@ -233,6 +246,7 @@ object ConnectFour {
               if (my_chips(col)(row) == "$") {
                 return 1
               }
+
               else {
                 return 2
               }

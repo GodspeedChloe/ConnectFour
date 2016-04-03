@@ -1,7 +1,7 @@
 package GameBoard
 
 /**
-  * Created by godspeedchloe on 3/19/16.
+  * Created by Chloe on 3/19/16.
   * This class is the board that we store chips in.
   */
 class Board {
