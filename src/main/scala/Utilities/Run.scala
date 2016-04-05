@@ -1,6 +1,7 @@
 package Utilities
 
 import GameBoard.Board
+import Utilities.lib.{SanitizeInput, PlayerMove}
 
 /**
   * Created by Chloe on 4/5/16.

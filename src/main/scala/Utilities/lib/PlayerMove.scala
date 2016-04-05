@@ -1,4 +1,4 @@
-package Utilities
+package Utilities.lib
 
 import GameBoard.Board
 
@@ -12,7 +12,6 @@ class PlayerMove {
   /**
     * This function places chips into the correct spot on the board,
     * simulating gravity and mindful of which player placed the chip
-    *
     * @param col the user input for their move
     * @param turn the iteration that the game is on
     * @param my_board the game board we are to be updating
@@ -47,7 +46,6 @@ class PlayerMove {
   /**
     * This function iterates through the board and tries to locate a winner
     * It is to be called after every move
-    *
     * @param my_board the board we are to be checking for winners
     * @return 0 for no winner, 1 for a Player 1 win, 2 for a Player 2 win
     */
@@ -61,10 +59,11 @@ class PlayerMove {
 
         if (my_chips(col)(row) != "_") {
 
-          if ((checkVertical(my_chips, row, col) == true) ||
-            (checkHorizontal(my_chips, row, col) == true) ||
-            (checkDiagonalPositive(my_chips, row, col) == true) ||
-            (checkDiagonalNegative(my_chips, row, col) == true)) {
+
+          if ((checkVertical(row, col, my_chips) == 1) ||
+            (checkHorizontal(row, col, my_chips) == 1) ||
+            (checkDiagonalPositive(row, col, my_chips) == 1) ||
+            (checkDiagonalNegative(row, col, my_chips) == 1)) {
 
             if (my_chips(col)(row) == "$") {
               return 1
@@ -84,17 +83,20 @@ class PlayerMove {
   /**
     * This function checks Vertical 4-in-a-row winners
     * @param my_chips The chips on the board
+    * @param row the row of a chip
+    * @param col the col of a chip
+    * @return 1 for winner, 0 for not a winner
     */
-  def checkVertical(my_chips : Array[Array[String]], row : Int, col : Int): Unit ={
+  def checkVertical(row : Int, col : Int, my_chips : Array[Array[String]]): AnyVal ={
 
     if (row + 3 < 5) {
 
       if ((my_chips(col)(row) == my_chips(col)(row + 1)) &&
         (my_chips(col)(row) == my_chips(col)(row + 2)) &&
         (my_chips(col)(row) == my_chips(col)(row + 3))) {
-        return true
+        return 1
       }
-      return false
+      0
     }
   }
 
@@ -102,17 +104,20 @@ class PlayerMove {
   /**
     * This function checks horizontal 4-in-a-row winners
     * @param my_chips The chips on the board
+    * @param row the row of a chip
+    * @param col the col of a chip
+    * @return 1 for winner, 0 for not a winner
     */
-  def checkHorizontal(my_chips : Array[Array[String]], row : Int, col : Int): Unit ={
+  def checkHorizontal(row : Int, col : Int, my_chips : Array[Array[String]]): AnyVal ={
 
     if (col + 3 < 6) {
 
       if ((my_chips(col)(row) == my_chips(col + 1)(row)) &&
         (my_chips(col)(row) == my_chips(col + 2)(row)) &&
         (my_chips(col)(row) == my_chips(col + 3)(row))) {
-        return true
+        return 1
       }
-      return false
+      0
     }
   }
 
@@ -120,16 +125,19 @@ class PlayerMove {
   /**
     * This function checks diagonal positive slope 4-in-a-row winners
     * @param my_chips The chips on the board
+    * @param row the row of a chip
+    * @param col the col of a chip
+    * @return 1 for winner, 0 for not a winner
     */
-  def checkDiagonalPositive(my_chips : Array[Array[String]], row : Int, col : Int): Unit ={
+  def checkDiagonalPositive(row : Int, col : Int, my_chips : Array[Array[String]]): AnyVal ={
 
     if ((col + 3 < 6) && (row + 3 < 5)) {
       if ((my_chips(col)(row) == my_chips(col + 1)(row + 1)) &&
         (my_chips(col)(row) == my_chips(col + 2)(row + 2)) &&
         (my_chips(col)(row) == my_chips(col + 3)(row + 3))) {
-        return true
+        return 1
       }
-      return false
+      0
     }
   }
 
@@ -137,16 +145,19 @@ class PlayerMove {
   /**
     * This function checks diagonal negative slope 4-in-a-row winners
     * @param my_chips The chips on the board
+    * @param row the row of a chip
+    * @param col the col of a chip
+    * @return 1 for winner, 0 for not a winner
     */
-  def checkDiagonalNegative(my_chips : Array[Array[String]], row : Int, col : Int): Unit ={
+  def checkDiagonalNegative(row : Int, col : Int, my_chips : Array[Array[String]]): AnyVal ={
 
     if ((col + 3 < 6) && (row > 2)) {
       if ((my_chips(col)(row) == my_chips(col + 1)(row - 1)) &&
         (my_chips(col)(row) == my_chips(col + 2)(row - 2)) &&
         (my_chips(col)(row) == my_chips(col + 3)(row - 3))) {
-        return true
+        return 1
       }
-      return false
+      0
     }
   }
 }

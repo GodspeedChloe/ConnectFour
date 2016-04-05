@@ -1,4 +1,4 @@
-package Utilities
+package Utilities.lib
 
 /**
   * Created by Chloe on 4/5/16.
