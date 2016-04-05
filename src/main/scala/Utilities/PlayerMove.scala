@@ -47,6 +47,7 @@ class PlayerMove {
   /**
     * This function iterates through the board and tries to locate a winner
     * It is to be called after every move
+    *
     * @param my_board the board we are to be checking for winners
     * @return 0 for no winner, 1 for a Player 1 win, 2 for a Player 2 win
     */
@@ -60,73 +61,17 @@ class PlayerMove {
 
         if (my_chips(col)(row) != "_") {
 
-          checkVertical(my_chips)
-          //max height where a vertical winner can start
-          if (row + 3 < 5) {
+          if ((checkVertical(my_chips, row, col) == true) ||
+            (checkHorizontal(my_chips, row, col) == true) ||
+            (checkDiagonalPositive(my_chips, row, col) == true) ||
+            (checkDiagonalNegative(my_chips, row, col) == true)) {
 
-            if ((my_chips(col)(row) == my_chips(col)(row + 1)) &&
-              (my_chips(col)(row) == my_chips(col)(row + 2)) &&
-              (my_chips(col)(row) == my_chips(col)(row + 3))) {
-
-              if (my_chips(col)(row) == "$") {
-                return 1
-              }
-
-              else {
-                return 2
-              }
+            if (my_chips(col)(row) == "$") {
+              return 1
             }
-          }
 
-          checkHorizontal(my_chips)
-          //max width where a horizontal winner can start
-          if (col + 3 < 6) {
-
-            if ((my_chips(col)(row) == my_chips(col + 1)(row)) &&
-              (my_chips(col)(row) == my_chips(col + 2)(row)) &&
-              (my_chips(col)(row) == my_chips(col + 3)(row))) {
-
-              if (my_chips(col)(row) == "$") {
-                return 1
-              }
-
-              else {
-                return 2
-              }
-            }
-          }
-
-          checkDiagonalPositive(my_chips)
-          //max width and height for a diagonal + slope winner
-          if ((col + 3 < 6) && (row + 3 < 5)) {
-            if ((my_chips(col)(row) == my_chips(col + 1)(row + 1)) &&
-              (my_chips(col)(row) == my_chips(col + 2)(row + 2)) &&
-              (my_chips(col)(row) == my_chips(col + 3)(row + 3))) {
-
-              if (my_chips(col)(row) == "$") {
-                return 1
-              }
-
-              else {
-                return 2
-              }
-            }
-          }
-
-          checkDiagonalNegative(my_chips)
-          //max width and height for a diagonal - slope winner
-          if ((col + 3 < 6) && (row > 2)) {
-            if ((my_chips(col)(row) == my_chips(col + 1)(row - 1)) &&
-              (my_chips(col)(row) == my_chips(col + 2)(row - 2)) &&
-              (my_chips(col)(row) == my_chips(col + 3)(row - 3))) {
-
-              if (my_chips(col)(row) == "$") {
-                return 1
-              }
-
-              else {
-                return 2
-              }
+            else {
+              return 2
             }
           }
         }
@@ -135,40 +80,73 @@ class PlayerMove {
     0
   }
 
-  /**
-    *
-    * @param my_chips
-    */
-  def checkVertical(my_chips : Array[Array[String]]): Unit ={
 
+  /**
+    * This function checks Vertical 4-in-a-row winners
+    * @param my_chips The chips on the board
+    */
+  def checkVertical(my_chips : Array[Array[String]], row : Int, col : Int): Unit ={
+
+    if (row + 3 < 5) {
+
+      if ((my_chips(col)(row) == my_chips(col)(row + 1)) &&
+        (my_chips(col)(row) == my_chips(col)(row + 2)) &&
+        (my_chips(col)(row) == my_chips(col)(row + 3))) {
+        return true
+      }
+      return false
+    }
   }
 
 
   /**
-    *
-    * @param my_chips
+    * This function checks horizontal 4-in-a-row winners
+    * @param my_chips The chips on the board
     */
-  def checkHorizontal(my_chips : Array[Array[String]]): Unit ={
+  def checkHorizontal(my_chips : Array[Array[String]], row : Int, col : Int): Unit ={
 
+    if (col + 3 < 6) {
+
+      if ((my_chips(col)(row) == my_chips(col + 1)(row)) &&
+        (my_chips(col)(row) == my_chips(col + 2)(row)) &&
+        (my_chips(col)(row) == my_chips(col + 3)(row))) {
+        return true
+      }
+      return false
+    }
   }
 
 
-
   /**
-    *
-    * @param my_chips
+    * This function checks diagonal positive slope 4-in-a-row winners
+    * @param my_chips The chips on the board
     */
-  def checkDiagonalPositive(my_chips : Array[Array[String]]): Unit ={
+  def checkDiagonalPositive(my_chips : Array[Array[String]], row : Int, col : Int): Unit ={
 
+    if ((col + 3 < 6) && (row + 3 < 5)) {
+      if ((my_chips(col)(row) == my_chips(col + 1)(row + 1)) &&
+        (my_chips(col)(row) == my_chips(col + 2)(row + 2)) &&
+        (my_chips(col)(row) == my_chips(col + 3)(row + 3))) {
+        return true
+      }
+      return false
+    }
   }
 
 
-
   /**
-    *
-    * @param my_chips
+    * This function checks diagonal negative slope 4-in-a-row winners
+    * @param my_chips The chips on the board
     */
-  def checkDiagonalNegative(my_chips : Array[Array[String]]): Unit ={
+  def checkDiagonalNegative(my_chips : Array[Array[String]], row : Int, col : Int): Unit ={
 
+    if ((col + 3 < 6) && (row > 2)) {
+      if ((my_chips(col)(row) == my_chips(col + 1)(row - 1)) &&
+        (my_chips(col)(row) == my_chips(col + 2)(row - 2)) &&
+        (my_chips(col)(row) == my_chips(col + 3)(row - 3))) {
+        return true
+      }
+      return false
+    }
   }
 }
