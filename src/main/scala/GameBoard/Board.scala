@@ -48,4 +48,31 @@ class Board {
       println(row_total)
     }
   }
+
+
+  /**
+    * This function checks whether or not a open slot is open in the board
+    * @param column
+    * @return true for open, false for full column
+    */
+  def openSlot(column : Int): AnyVal ={
+    if (this.getChips()(column)(5) == "_") {
+      return true
+    }
+    false
+  }
+
+
+  /**
+    * This function checks whether the board is full or not
+    * @return false for not full, true for full
+    */
+  def isFull(): AnyVal ={
+    for (column <- 0 to 6) {
+      if (this.getChips()(column)(5) == "_") {
+        return false
+      }
+    }
+    true
+  }
 }
