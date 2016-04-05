@@ -55,7 +55,7 @@
         <entry file="file://$PROJECT_DIR$/src/main/scala/Utilities/Run.scala">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+              <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
               <folding />
             </state>
           </provider>
@@ -64,8 +64,8 @@
       <file leaf-file-name="PlayerMove.scala" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/scala/Utilities/PlayerMove.scala">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.38633817">
-              <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+            <state vertical-scroll-proportion="0.25195968">
+              <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
               <folding />
             </state>
           </provider>
@@ -114,9 +114,9 @@
       <list>
         <option value="$PROJECT_DIR$/src/main/scala/ConnectFour.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Utilities/SanitizeInput.scala" />
-        <option value="$PROJECT_DIR$/src/main/scala/Utilities/PlayerMove.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/GameBoard/Board.scala" />
         <option value="$PROJECT_DIR$/src/main/scala/Utilities/Run.scala" />
+        <option value="$PROJECT_DIR$/src/main/scala/Utilities/PlayerMove.scala" />
       </list>
     </option>
   </component>
@@ -131,7 +131,7 @@
     <treeState />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="1" />
+    <option name="x" value="961" />
     <option name="y" value="52" />
     <option name="width" value="958" />
     <option name="height" value="1027" />
@@ -666,7 +666,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1" y="52" width="958" height="1027" extended-state="4" />
+    <frame x="961" y="52" width="958" height="1027" extended-state="4" />
     <editor active="true" />
     <layout>
       <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -954,7 +954,7 @@
     <entry file="file://$PROJECT_DIR$/src/main/scala/Utilities/Run.scala">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="50" column="20" selection-start-line="50" selection-start-column="20" selection-end-line="50" selection-end-column="20" />
+          <caret line="25" column="34" selection-start-line="25" selection-start-column="34" selection-end-line="25" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -969,8 +969,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/scala/Utilities/PlayerMove.scala">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.38633817">
-          <caret line="23" column="0" selection-start-line="23" selection-start-column="0" selection-end-line="23" selection-end-column="0" />
+        <state vertical-scroll-proportion="0.25195968">
+          <caret line="74" column="20" selection-start-line="74" selection-start-column="20" selection-end-line="74" selection-end-column="20" />
           <folding />
         </state>
       </provider>

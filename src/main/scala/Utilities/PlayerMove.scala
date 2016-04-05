@@ -60,6 +60,7 @@ class PlayerMove {
 
         if (my_chips(col)(row) != "_") {
 
+          checkVertical(my_chips)
           //max height where a vertical winner can start
           if (row + 3 < 5) {
 
@@ -77,6 +78,7 @@ class PlayerMove {
             }
           }
 
+          checkHorizontal(my_chips)
           //max width where a horizontal winner can start
           if (col + 3 < 6) {
 
@@ -94,6 +96,7 @@ class PlayerMove {
             }
           }
 
+          checkDiagonalPositive(my_chips)
           //max width and height for a diagonal + slope winner
           if ((col + 3 < 6) && (row + 3 < 5)) {
             if ((my_chips(col)(row) == my_chips(col + 1)(row + 1)) &&
@@ -110,6 +113,7 @@ class PlayerMove {
             }
           }
 
+          checkDiagonalNegative(my_chips)
           //max width and height for a diagonal - slope winner
           if ((col + 3 < 6) && (row > 2)) {
             if ((my_chips(col)(row) == my_chips(col + 1)(row - 1)) &&
@@ -129,5 +133,42 @@ class PlayerMove {
       }
     }
     0
+  }
+
+  /**
+    *
+    * @param my_chips
+    */
+  def checkVertical(my_chips : Array[Array[String]]): Unit ={
+
+  }
+
+
+  /**
+    *
+    * @param my_chips
+    */
+  def checkHorizontal(my_chips : Array[Array[String]]): Unit ={
+
+  }
+
+
+
+  /**
+    *
+    * @param my_chips
+    */
+  def checkDiagonalPositive(my_chips : Array[Array[String]]): Unit ={
+
+  }
+
+
+
+  /**
+    *
+    * @param my_chips
+    */
+  def checkDiagonalNegative(my_chips : Array[Array[String]]): Unit ={
+
   }
 }
