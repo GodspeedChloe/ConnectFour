@@ -16,7 +16,7 @@ class Support {
     * @param turn the iteration that the game is on
     * @param my_board the game board we are to be updating
     */
-  def placeChip(col : Int, turn : Int, my_board : Board): Array[Array[String]] ={
+  def placeChip(col : Int, turn : Int, my_board : Board): Unit ={
 
     val new_board : Array[Array[String]] = my_board.getChips()
     var index : Int = 0
@@ -27,18 +27,17 @@ class Support {
 
         if (turn % 2 == 0) {
           new_board(col - 1)(index) = "$"
-          return new_board
+          return
         }
 
         else {
           new_board(col - 1)(index) = "@"
-          return new_board
+          return
         }
       }
 
       index += 1
     }
-    new_board
   }
 
 

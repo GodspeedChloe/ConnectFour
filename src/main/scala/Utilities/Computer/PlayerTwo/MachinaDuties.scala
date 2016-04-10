@@ -24,9 +24,11 @@ class MachinaDuties {
 
     for(column <- 0 to 6){
 
-      val new_chips : Array[Array[String]] = library.placeChip(column, 2, my_board)
+      val new_board : GameBoard.Board = my_board.copyBoard()
 
-      if (library.checkWinner(new_chips) == 1) {
+      library.placeChip(column, 2, new_board)
+
+      if (library.checkWinner(new_board) == 1) {
         return column
       }
     }
@@ -38,7 +40,6 @@ class MachinaDuties {
   /**
     * This function checks the board for the AI's potential win move.
     * The AI then knows where to place to win
- *
     * @param my_board the current game board
     * @return -1 for no winning move, integer 0 to 6 inclusive for winning placement
     */
@@ -46,9 +47,11 @@ class MachinaDuties {
 
     for(column <- 0 to 6){
 
-      val new_chips : Array[Array[String]] = library.placeChip(column, 1, my_board)
+      val new_board : GameBoard.Board = my_board.copyBoard()
 
-      if (library.checkWinner(new_chips) == 2) {
+      library.placeChip(column, 1, new_board)
+
+      if (library.checkWinner(new_board) == 2) {
         return column
       }
     }
@@ -57,15 +60,24 @@ class MachinaDuties {
   }
 
 
-
+  /**
+    * This function checks the board for the AI's potential losing move.
+    * The AI then can avoid bad moves
+    * @param my_board
+    * @return
+    */
   def checkLosingMove(my_board: GameBoard.Board): Int={
 
     for(column <- 0 to 6) {
 
-      var new_board : GameBoard.Board = my_board
+      val new_board : GameBoard.Board = my_board.copyBoard()
+
       library.placeChip(column, 1, new_board)
+      library.placeChip(column, 2, new_board)
 
-
+      if (library.checkWinner(new_board) == 1) {
+        return column
+      }
     }
 
     -1
