@@ -75,4 +75,15 @@ class Board {
     }
     true
   }
+
+
+  /**
+    * This function deep copies a Board instance
+    * @return the newly created Board instance
+    */
+  def copyBoard(): Board ={
+    val new_board = new Board
+    new_board.setChips(this.getChips())
+    return new_board
+  }
 }

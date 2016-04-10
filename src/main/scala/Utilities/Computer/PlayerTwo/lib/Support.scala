@@ -45,10 +45,12 @@ class Support {
   /**
     * This function iterates through the board and tries to locate a winner
     * It is to be called after every move
-    * @param my_chips the chips we are looking over
+    * @param my_board the board we are scanning
     * @return 0 for no winner, 1 for a Player 1 win, 2 for a Player 2 win
     */
-  def checkWinner(my_chips : Array[Array[String]]): Int ={
+  def checkWinner(my_board : Board): Int ={
+
+    val my_chips : Array[Array[String]] = my_board.getChips()
 
     for (col <- 0 to 6) {
 
