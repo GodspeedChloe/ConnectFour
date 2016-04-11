@@ -46,7 +46,7 @@ class Run {
 
       if (input > 0) {
 
-        if (my_board.openSlot(input) == true) {
+        if (my_board.openSlot(input-1) == true) {
           turn += 1
           user_move.placeChip(input, turn, my_board)
 

@@ -11,14 +11,13 @@ import scala.collection.mutable.ArrayBuffer
   */
 class MachinaDuties {
 
-
+  //instantiating the support library
   val library = new Support
 
 
   /**
     * This function checks the board for the human user's potential win move.
     * The AI then knows where to block the human user
- *
     * @param my_board the current game board
     * @return -1 for no blocking move, integer 0 to 6 inclusive for blocking placement
     */
@@ -42,7 +41,6 @@ class MachinaDuties {
   /**
     * This function checks the board for the AI's potential win move.
     * The AI then knows where to place to win
- *
     * @param my_board the current game board
     * @return -1 for no winning move, integer 0 to 6 inclusive for winning placement
     */
