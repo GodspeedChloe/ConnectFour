@@ -8,12 +8,18 @@ package Utilities.Computer.PlayerTwo
 class ArtificialIntelligence {
 
 
+  val duties = new MachinaDuties
+
   /**
     * This method makes all the appropriate calls and moves defensively or aggressively
     * @param my_board the current game board
     * @return the column choice
     */
   def makeNextMove(my_board : GameBoard.Board): Int ={
+
+
+
+
     0
   }
 }
