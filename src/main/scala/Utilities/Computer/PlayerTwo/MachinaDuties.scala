@@ -18,6 +18,7 @@ class MachinaDuties {
   /**
     * This function checks the board for the human user's potential win move.
     * The AI then knows where to block the human user
+    *
     * @param my_board the current game board
     * @return -1 for no blocking move, integer 0 to 6 inclusive for blocking placement
     */
@@ -41,6 +42,7 @@ class MachinaDuties {
   /**
     * This function checks the board for the AI's potential win move.
     * The AI then knows where to place to win
+    *
     * @param my_board the current game board
     * @return -1 for no winning move, integer 0 to 6 inclusive for winning placement
     */
@@ -64,6 +66,7 @@ class MachinaDuties {
   /**
     * This function checks the board for the AI's potential losing move.
     * The AI then can avoid bad moves
+    *
     * @param my_board the current game board
     * @return -1 for no losing move, integer 0 to 6 inclusive for losing placement
     */
@@ -84,5 +87,35 @@ class MachinaDuties {
     }
 
     bad_moves
+  }
+
+
+  /**
+    * This function checks the board for the AI's safe moves
+    *
+    * @param my_board
+    * @return
+    */
+  def checkDecentMoves(my_board: GameBoard.Board, bad_moves : ArrayBuffer[Int]): ArrayBuffer[Int] ={
+
+    val not_shit_moves = ArrayBuffer[Int]()
+
+    for (column <- 0 to 6) {
+
+      var in : Int = 1
+
+      for (bad_move <- bad_moves) {
+
+        if (column != bad_move) {
+          in = 0
+        }
+      }
+
+      if (in == 1) {
+        not_shit_moves.append(column)
+      }
+    }
+
+    return not_shit_moves
   }
 }
