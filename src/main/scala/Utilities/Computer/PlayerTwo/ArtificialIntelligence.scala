@@ -4,7 +4,7 @@ import scala.collection.mutable.ArrayBuffer
 
 /**
   * Created by Chloe on 4/8/16.
-  * This class houses the controller for the AI.  It arranges function calls
+  * This class houses the controller for the AI.  It arranges function calls intelligently.
   * In order to generate the next move for the AI.
   */
 class ArtificialIntelligence {
@@ -60,5 +60,5 @@ class ArtificialIntelligence {
     decent_move
   }
 
-  /*                                                     It's time to become a part of all things        */
+  /*                                                       It's time to become a part of all things        */
 }
