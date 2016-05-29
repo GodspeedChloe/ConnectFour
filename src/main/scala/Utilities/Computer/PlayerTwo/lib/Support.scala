@@ -73,6 +73,7 @@ class Support {
         }
       }
     }
+    
     0
   }
 
@@ -94,6 +95,7 @@ class Support {
         (my_chips(col)(row) == my_chips(col)(row + 3))) {
         return 1
       }
+
       0
     }
   }
@@ -116,6 +118,7 @@ class Support {
         (my_chips(col)(row) == my_chips(col + 3)(row))) {
         return 1
       }
+
       0
     }
   }
@@ -137,6 +140,7 @@ class Support {
         (my_chips(col)(row) == my_chips(col + 3)(row + 3))) {
         return 1
       }
+
       0
     }
   }
@@ -158,6 +162,7 @@ class Support {
         (my_chips(col)(row) == my_chips(col + 3)(row - 3))) {
         return 1
       }
+
       0
     }
   }

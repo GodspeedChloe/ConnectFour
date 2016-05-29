@@ -13,7 +13,6 @@ class ArtificialIntelligence {
 
   val duties = new MachinaDuties
 
-
   /**
     * This method makes all the appropriate calls and moves defensively or aggressively
     *
