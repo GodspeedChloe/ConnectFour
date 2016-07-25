@@ -2,6 +2,7 @@ package Utilities
 
 import GameBoard.Board
 import Utilities.lib.{SanitizeInput, PlayerMove}
+import Utilities.Computer.PlayerTwo.{ArtificialIntelligence, MachinaDuties}
 
 /**
   * Created by Chloe on 4/5/16.
@@ -13,6 +14,8 @@ import Utilities.lib.{SanitizeInput, PlayerMove}
   * > Updating and displaying the game board
   * > Deciding a winner after every turn
   * > Repeating all the tasks after a game mode is chosen or quitting
+  * > Running a game against an AI
+  * > Creating and running the AI
   */
 class Run {
 
@@ -25,6 +28,7 @@ class Run {
     val my_board = new Board
     val user_input = new SanitizeInput
     val user_move = new PlayerMove
+    val motoko = new ArtificialIntelligence
 
     var imitation_game : Boolean = false
     var two_people : Boolean = false
@@ -36,13 +40,21 @@ class Run {
       "\n    to place your chip were 1 is the leftmost column" +
       "\n    @ -> Player1, $ -> Player2 or AI")
 
+    while(hasnotchosengame == false)
+      println("\nDo you wish to play a to player game? (yes/no)")
+      val game_mode: String = readLine()
+
+    
     while (one_person) {
 
       if (turn % 2 == 0) {
-
         val input: Int = user_input.takeInput(turn)
-      
-        if (input > 0) {
+      }
+      else {
+        val input: Int = motoko.makeNextMove(my_board)
+      }
+
+      if (input > 0) {
 
         if (my_board.openSlot(input-1) == true) {
           turn += 1
@@ -53,7 +65,7 @@ class Run {
           my_board.displayBoard()
 
           if (winner == 1) {
-            println("\n" + "!!!!!!!!!!!!!!!! Player 1 WINS !!!!!!!!!!!!!!!!" + "\nThanks for playing!")
+            println("\n" + "!!!!!!!!!!!!!!!!  Motoko WINS  !!!!!!!!!!!!!!!!" + "\nThanks for playing!")
             go = false
             System.exit(0)
           }
@@ -67,15 +79,9 @@ class Run {
 
         else {
           println("Column full, try another")
-        }
+        } 
       }
-    }
-    else {
-
-      
-         
-    }
-  }  
+    }  
 
 
     while (two_people) {

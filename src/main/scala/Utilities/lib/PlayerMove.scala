@@ -59,7 +59,6 @@ class PlayerMove {
 
         if (my_chips(col)(row) != "_") {
 
-
           if ((checkVertical(row, col, my_chips) == 1) ||
             (checkHorizontal(row, col, my_chips) == 1) ||
             (checkDiagonalPositive(row, col, my_chips) == 1) ||
