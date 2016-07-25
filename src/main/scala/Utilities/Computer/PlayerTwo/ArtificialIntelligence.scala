@@ -34,7 +34,7 @@ class ArtificialIntelligence {
     //Return a random neutral move if no block and win moves exist
     val bad_moves = duties.checkLosingMoves(my_board)
     val decent_moves = duties.checkDecentMoves(my_board, bad_moves)
-    val decent_move = pickRandom(decent_moves)
+    val decent_move = makeMovesSon(decent_moves)
 
     if (decent_move != -1) { return decent_move }
 
@@ -48,7 +48,7 @@ class ArtificialIntelligence {
     * @param move_set the set of moves we are to pick from
     * @return the column choice
     */
-  def pickRandom(move_set : ArrayBuffer[Int]): Int ={
+  def makeMovesSon(move_set : ArrayBuffer[Int]): Int ={
 
     if (move_set.isEmpty) {
       return -1

@@ -8,6 +8,25 @@ class SanitizeInput {
 
 
   /**
+    * This function parses an input string and discerns the game mode the user(s) wishes therein
+    * @param game_mode the yes or no answer to the type of game the user wishes for
+    * @return 1 for two-player game, 0 for one-player game, -1 for invalid input
+    */
+  def getGameMode(game_mode : String): Int = {
+    
+    if ((game_mode.toLowerCase == "yes") || (game_mode.toLowerCase == "y")) {
+      return 1
+    }
+
+    if ((game_mode.toLowerCase == "no") || (game_mode.toLowerCase == "n")) {
+      return 2
+    }
+
+    return -1 //no valid input was given by the user
+  }
+
+
+  /**
     * This function displays whose turn it is, takes the turn from
     * console and parses it
     * @param turn the iteration of the game

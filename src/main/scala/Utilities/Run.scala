@@ -28,8 +28,8 @@ class Run {
     val my_board = new Board
     val user_input = new SanitizeInput
     val user_move = new PlayerMove
-    val motoko = new ArtificialIntelligence
 
+    var has_not_chosen_game : Boolean = false
     var imitation_game : Boolean = false
     var two_people : Boolean = false
     var turn : Int = 0
@@ -40,13 +40,15 @@ class Run {
       "\n    to place your chip were 1 is the leftmost column" +
       "\n    @ -> Player1, $ -> Player2 or AI")
 
-    while(hasnotchosengame == false)
-      println("\nDo you wish to play a to player game? (yes/no)")
+    while(has_not_chosen_game == false)
+      println("\nDo you wish to play a two player game? (yes/no)")
       val game_mode: String = readLine()
-
+      getGameMode(game_mode)
     
     while (one_person) {
 
+      val motoko = new ArtificialIntelligence
+      
       if (turn % 2 == 0) {
         val input: Int = user_input.takeInput(turn)
       }
