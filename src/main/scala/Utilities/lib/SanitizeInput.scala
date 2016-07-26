@@ -22,7 +22,7 @@ class SanitizeInput {
       return 2
     }
 
-    return -1 //no valid input was given by the user
+    -1 //no valid input was given by the user
   }
 
 

@@ -29,9 +29,9 @@ class Run {
     val user_input = new SanitizeInput
     val user_move = new PlayerMove
 
-    var has_not_chosen_game : Boolean = false
+    var has_not_chosen_game : Boolean = true
     var imitation_game : Boolean = false
-    var two_people : Boolean = false
+    var one_person: Boolean = false
     var turn : Int = 0
 
     println("Welcome to Connect four!!!" +
@@ -40,11 +40,28 @@ class Run {
       "\n    to place your chip were 1 is the leftmost column" +
       "\n    @ -> Player1, $ -> Player2 or AI")
 
-    while(has_not_chosen_game == false)
+
+    // this block is for finding out the game mode
+    while(has_not_chosen_game == true)
+
       println("\nDo you wish to play a two player game? (yes/no)")
       val game_mode: String = readLine()
-      getGameMode(game_mode)
+
+      if (getGameMode(game_mode) == 1) {
+        one_person = false
+        has_not_chosen_game = false
+      }
+      else if (getGameMode(game_mode) == 2) {
+        one_person = true
+        has_not_chosen_game = false
+      }
+      else {
+        println("\nInvalid input.  Do you wish to play a two player game? (yes/no)")
+      }
+    }
     
+
+    //this block is for one-person vs. AI games
     while (one_person) {
 
       val motoko = new ArtificialIntelligence
@@ -52,7 +69,11 @@ class Run {
       if (turn % 2 == 0) {
         val input: Int = user_input.takeInput(turn)
       }
+
       else {
+        for(wait <- 0 to 1000) {
+          //make the AI take its time
+        }
         val input: Int = motoko.makeNextMove(my_board)
       }
 
@@ -85,8 +106,8 @@ class Run {
       }
     }  
 
-
-    while (two_people) {
+    //this block is for two-person games
+    while (!(one_person)) {
 
       val input: Int = user_input.takeInput(turn)
 
